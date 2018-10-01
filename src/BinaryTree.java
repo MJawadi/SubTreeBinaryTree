@@ -49,7 +49,7 @@ public class BinaryTree {
 
 
 
-    public Node findNode(int key, String word) {
+    public Node findNode(int key) {
 
     // Start at the top of the tree
 
@@ -59,11 +59,11 @@ public class BinaryTree {
 
     // keep looking
 
-     while ((focusNode.data != key) || (focusNode.name == word)) {
+     while (focusNode.data != key) {
 
         // If we should search to the left
 
-        if (key < focusNode.data || focusNode.name == word ) {
+        if (key < focusNode.data ) {
 
             // Shift the focus Node to the left child
 
@@ -77,7 +77,7 @@ public class BinaryTree {
 
         // The node wasn't found
 
-        if (focusNode == null || focusNode.name != word)
+        if (focusNode == null)
 
             return null;
         }
@@ -88,12 +88,15 @@ public class BinaryTree {
     
     public static void main(String[] args) {
     	
+    	/*
     	boolean endSearch = false;
     	int numberOfSearch;
+    	System.out.println("Insert the number to search: ");
         Scanner input = new Scanner(System.in);
         String searchWord = input.nextLine();
+        Scanner search = new Scanner(System.in);
         int searchNum;
-    	
+    	*/
             BinaryTree theTree = new BinaryTree();
             theTree.addNode(50, "Boss");
             theTree.addNode(25, "Vice President");
@@ -108,19 +111,16 @@ public class BinaryTree {
 
             // Find the node with key 75
             
+            /*
             while(endSearch == false) {
             	
-            	theTree.findNode(key, word);
-            	if(searchWord == findNode.name ) {
-            		
-            	}
-            	
-            	
+            	if ()
             }
+            */
 
             System.out.println("\nNode with the key ");
 
-            //System.out.println(theTree.findNode(75));
+            System.out.println(theTree.findNode(50));
 
     }
 
@@ -142,7 +142,7 @@ class Node {
     	this.name = call;
     }
 	public String toString() {
-		return name + "has key " + data;
+		return name + " has key " + data;
 	}
 	
 }
