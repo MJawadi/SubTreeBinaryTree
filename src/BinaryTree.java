@@ -58,6 +58,7 @@ public class BinaryTree {
     // While we haven't found the Node
 
     // keep looking
+     if(focusNode.data <= key) {
 
      while (focusNode.data != key) {
 
@@ -78,25 +79,18 @@ public class BinaryTree {
         // The node wasn't found
 
         if (focusNode == null)
-
+ 
             return null;
         }
      }
-
-     return focusNode;
+     }else {
+    	System.out.println("Data has not been found! ");
+     }
+     return null;
     }
     
     public static void main(String[] args) {
-    	
-    	/*
-    	boolean endSearch = false;
-    	int numberOfSearch;
-    	System.out.println("Insert the number to search: ");
-        Scanner input = new Scanner(System.in);
-        String searchWord = input.nextLine();
-        Scanner search = new Scanner(System.in);
-        int searchNum;
-    	*/
+
             BinaryTree theTree = new BinaryTree();
             theTree.addNode(50, "Boss");
             theTree.addNode(25, "Vice President");
@@ -111,16 +105,39 @@ public class BinaryTree {
 
             // Find the node with key 75
             
-            /*
-            while(endSearch == false) {
-            	
-            	if ()
-            }
-            */
+            
+            
+            System.out.println("Please enter the number you want tosearch in the tree: ");
+            Scanner searchNum = new Scanner(System.in);
+            Scanner Word = new Scanner(System.in);
+            String inputWord = Word.nextLine();
+            int inputNum = 0;
+            int outputNum = 0;
+            boolean run = true;
+            
+        	inputNum = searchNum.nextInt();
+        	
+        	while(run == true) {
+        		
+        		if(inputNum == 0) {
+        	        System.out.println(theTree.findNode(inputNum));
+                    System.out.println("\nNode with the key ");
+            		System.out.println("\n \nPlease search another number or type finish to end the search: ");
+            		outputNum++;
+        		}else {
+        			System.out.println("Please put a number again: ");
+        			inputNum = 0;
+        		}
+        		if(inputWord.equals("Finish") || inputWord.equals("Finish")) {
+        			System.out.println("\n \n \n Search has been finish, the times of the searchs " + outputNum);
+        			outputNum = 0;
+        			inputNum = 0;
+        			run = false;
+        			searchNum.close();
+        			Word.close();
+        		}
+        	}
 
-            System.out.println("\nNode with the key ");
-
-            System.out.println(theTree.findNode(50));
 
     }
 
