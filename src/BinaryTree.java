@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import treeSumme.Node;
+//import treeSumme.Node;
 
 public class BinaryTree {
 	
@@ -92,30 +93,13 @@ public class BinaryTree {
 		return on;
 	}
 	*/
-	
-	
-	
-
-	List<Node> search(String name, Node selected) {
-
-		if (selected != null) {
-			if(selected.name.equals(name)) {
-				
-			}
-			List<Node> left = search(name,selected.left);
-			List<Node> right = search(name,selected.right);
-			return todo;
-		} else {
-			return todo;
-		}
-	}
 
 
     public Node findNode(int key) {
-
+    	
     // Start at the top of the tree
      Node focusNode = root;
-
+     
     // While we haven't found the Node
     // keep looking
      if(focusNode.data < key || focusNode.data > key) {
@@ -140,6 +124,34 @@ public class BinaryTree {
      return focusNode;
     }
     
+    
+    
+	List<Node> search(String name, Node selected) {
+
+		if (selected != null) {
+			List<Node> list = new ArrayList<>();
+			if (selected.name.equals(name)) {
+				System.out.println(selected);
+				list.add(selected);
+			} else {
+				List<Node> left = search(name, selected.left);
+				List<Node> right = search(name, selected.right);
+
+				if (left != null) {
+					list.addAll(left);
+				}
+				
+				if (right != null) {
+					list.addAll(right);
+				}
+			}
+			return list;
+		} else {
+			return null;
+		}
+	}
+    
+    
     public static void main(String[] args) {
 
             BinaryTree theTree = new BinaryTree();
@@ -156,39 +168,52 @@ public class BinaryTree {
 
             // Find the node with key 75
             
+           // theTree.search("Salesman 1", theTree.root);
+           //System.out.println( theTree.search("Salesman 1", theTree.root));
             
-           /*
-            Scanner searchNum = new Scanner(System.in);
-            Scanner Word = new Scanner(System.in);
+            
+           
+            Scanner sc = new Scanner(System.in);
             String inputWord;
             int inputNum = 0;
             int outputNum = 0;
             
+            
+            
+            
+            while(true) {
+            	System.out.println("Please insert the name or number to search: ");
+            	if(sc.hasNextInt()) {
+            		  inputNum = sc.nextInt();
+            		  System.out.println("\nNode with the key:  " + theTree.findNode(inputNum));
+            	}else {
+            		inputWord = sc.nextLine();
+            		System.out.println( theTree.search("inputWord", theTree.root));
+            	}
+            }
         	
+            /*
         	while(true) {
                 System.out.println("Please enter the number you want to search in the tree: ");
-            	inputNum = searchNum.nextInt();
+            	inputNum = sc.nextInt();
         		if(inputNum != 0) {
-                    System.out.println("\nNode with the key ");
-        	        System.out.println(theTree.findNode(inputNum));
+                    System.out.println("\nNode with the key:  " + theTree.findNode(inputNum));
+                    System.out.println("\n");
         	        outputNum++;
         		}else {
-        			System.out.println("Please put a number again: y/n ");
-        			inputNum = 0;
+        			System.out.println("search a number again: y/n ");
+        			inputWord = sc.nextLine();
+            		if(inputWord.equals("n") || inputWord.equals("N")) {
+            			System.out.println("\n \n \n Search has been finish, the times of the searchs " + outputNum);
+            			sc.close();
+            			break;
+            		}
         		}
-        		/*
-        		inputWord = Word.nextLine();
-        		if(inputWord.equals("y") || inputWord.equals("Y")) {
-        			System.out.println("\n \n \n Search has been finish, the times of the searchs " + outputNum);
-        			outputNum = 0;
-        			inputNum = 0;
-        			run = false;
-        			searchNum.close();
-        			Word.close();
-        		}
+
         		
-        	}
-            */    
+        	}*/
+             
+            
 
     }
 
